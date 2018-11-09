@@ -10,7 +10,7 @@ try:
 except ImportError:
     pass
 
-# For now, GreenletProfiler includes a patched version of Sumer Cip's yappi.
+# For now, NGreenletProfiler includes a patched version of Sumer Cip's yappi.
 # The original yappi source is at https://bitbucket.org/sumerc/yappi, and my
 # fork is at https://bitbucket.org/emptysquare/gappi. The patched source is
 # included in this project in the _vendorized_yappi directory, and the
@@ -27,7 +27,7 @@ if os.name == 'posix' and sys.platform != 'darwin':
         user_libraries.append('rt')
 
 yappi_extension = Extension(
-    '_GreenletProfiler_yappi',
+    '_NGreenletProfiler_yappi',
     sources=[
         '_vendorized_yappi/_yappi.c',
         '_vendorized_yappi/callstack.c',
@@ -67,13 +67,13 @@ if 'nosetests' in sys.argv:
     packages.append('test')
 
 setup(
-    name='GreenletProfiler',
+    name='NGreenletProfiler',
     version='0.1',
     packages=packages,
     # Include Yappi's C extension, _yappi.so, which we've renamed to
-    # _GreenletProfiler_yappi.so.
+    # _NGreenletProfiler_yappi.so.
     ext_modules=[yappi_extension],
-    # Include yappi.py along with our own GreenletProfiler.py.
+    # Include yappi.py along with our own NGreenletProfiler.py.
     py_modules=[
         '_vendorized_yappi/yappi',
         '_vendorized_yappi/__init__',

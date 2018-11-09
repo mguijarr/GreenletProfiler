@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# GreenletProfiler documentation build configuration file, created by
+# NGreenletProfiler documentation build configuration file, created by
 # sphinx-quickstart on Sun Jan 26 13:01:43 2014.
 #
 # This file is execfile()d with the current directory set to its
@@ -48,7 +48,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'GreenletProfiler'
+project = u'NGreenletProfiler'
 copyright = u'2014, A. Jesse Jiryu Davis'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -181,7 +181,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'GreenletProfilerdoc'
+htmlhelp_basename = 'NGreenletProfilerdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -201,7 +201,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'GreenletProfiler.tex', u'GreenletProfiler Documentation',
+  ('index', 'NGreenletProfiler.tex', u'NGreenletProfiler Documentation',
    u'A. Jesse Jiryu Davis', 'manual'),
 ]
 
@@ -231,8 +231,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'greenletprofiler', u'GreenletProfiler Documentation',
-     [u'A. Jesse Jiryu Davis'], 1)
+    ('index', 'ngreenletprofiler', u'NGreenletProfiler Documentation',
+     [u'fallenwood'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -245,8 +245,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'GreenletProfiler', u'GreenletProfiler Documentation',
-   u'A. Jesse Jiryu Davis', 'GreenletProfiler', 'One line description of project.',
+  ('index', 'NGreenletProfiler', u'NGreenletProfiler Documentation',
+   u'fallenwood', 'NGreenletProfiler', 'One line description of project.',
    'Miscellaneous'),
 ]
 

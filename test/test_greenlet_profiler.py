@@ -3,7 +3,7 @@ import unittest
 
 import greenlet
 
-import GreenletProfiler
+import NGreenletProfiler
 
 
 def find_func(ystats, name):
@@ -38,19 +38,19 @@ class GreenletTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # Measure the CPU cost of spin() as a baseline.
-        GreenletProfiler.set_clock_type('cpu')
-        GreenletProfiler.start()
+        NGreenletProfiler.set_clock_type('cpu')
+        NGreenletProfiler.start()
         for _ in range(10):
             spin(1)
-        GreenletProfiler.stop()
-        f_stats = GreenletProfiler.get_func_stats()
+        NGreenletProfiler.stop()
+        f_stats = NGreenletProfiler.get_func_stats()
         spin_stat = find_func(f_stats, 'spin')
         GreenletTest.spin_cost = spin_stat.ttot / 10.0
-        GreenletProfiler.clear_stats()
+        NGreenletProfiler.clear_stats()
 
     def tearDown(self):
-        GreenletProfiler.stop()
-        GreenletProfiler.clear_stats()
+        NGreenletProfiler.stop()
+        NGreenletProfiler.clear_stats()
 
     def assertNear(self, x, y, margin=0.2):
         if abs(x - y) / float(x) > margin:
@@ -71,8 +71,8 @@ class GreenletTest(unittest.TestCase):
         def c():
             spin(7)
         
-        GreenletProfiler.set_clock_type('cpu')
-        GreenletProfiler.start(builtins=True)
+        NGreenletProfiler.set_clock_type('cpu')
+        NGreenletProfiler.start(builtins=True)
         gr_main = greenlet.getcurrent()
         g = greenlet.greenlet(a)
         g.switch()
@@ -81,9 +81,9 @@ class GreenletTest(unittest.TestCase):
         spin(3)
         g.switch()
         self.assertFalse(g, 'greenlet not complete')
-        GreenletProfiler.stop()
+        NGreenletProfiler.stop()
 
-        ystats = GreenletProfiler.get_func_stats()
+        ystats = NGreenletProfiler.get_func_stats()
 
         # Check the stats for spin().
         spin_stat = find_func(ystats, 'spin')
@@ -157,8 +157,8 @@ class GreenletTest(unittest.TestCase):
 
             gr_main.switch()
 
-        GreenletProfiler.set_clock_type('cpu')
-        GreenletProfiler.start(builtins=True)
+        NGreenletProfiler.set_clock_type('cpu')
+        NGreenletProfiler.start(builtins=True)
         gr_main = greenlet.getcurrent()
         g0 = greenlet.greenlet(partial(r, 10))  # Run r 10 times.
         g0.switch()
@@ -175,8 +175,8 @@ class GreenletTest(unittest.TestCase):
                     # Finished.
                     greenlets.remove(g)
 
-        GreenletProfiler.stop()
-        ystats = GreenletProfiler.get_func_stats()
+        NGreenletProfiler.stop()
+        ystats = NGreenletProfiler.get_func_stats()
 
         # Check the stats for spin().
         spin_stat = find_func(ystats, 'spin')
